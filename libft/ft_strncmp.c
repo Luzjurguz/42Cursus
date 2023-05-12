@@ -6,11 +6,11 @@
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:57:55 by luz-mjur          #+#    #+#             */
-/*   Updated: 2023/05/05 15:09:37 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:15:48 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {
@@ -21,7 +21,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	{
 		if (s1[cnt] != s2[cnt])
 		{
-			return((unsigned char)s1[cnt] - (unsigned char)s2[cnt]);
+			return ((unsigned char)s1[cnt] - (unsigned char)s2[cnt]);
 		}
 		cnt++;
 	}
