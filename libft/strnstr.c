@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   strnstr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 15:15:08 by luz-mjur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:03:38 by luz-mjur         ###   ########.fr       */
+/*   Created: 2023/05/12 18:40:15 by luz-mjur          #+#    #+#             */
+/*   Updated: 2023/05/12 18:55:31 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strstr(const char *big, const char	*little locale_t len)
 {
-	size_t cnt;
-	char *str;
-
-	cnt = 0;
-	str = (char *)s;
-	while (cnt < n)
-	{
-		if (str[cnt] == (char)c)
-			return (str + cnt);
-		cnt++;
-	}
-	return (0);
+		
 }

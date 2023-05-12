@@ -6,7 +6,7 @@
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 21:11:56 by luz-mjur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:17:46 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:41:11 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	char	*dst1;
-	char	*src1;
-	size_t	i;
+	char *dst1;
+	char *src1;
+	size_t i;
 
-	i = n;
+	i = 0;
 	src1 = (char *)src;
 	dst1 = (char *)dst;
 
 	if (!dst && !src)
 		return (0);
-	if (dst1 > src1)
+	if (dst1 >= src1)
 	{
 		while (n > 0)
 		{
