@@ -6,7 +6,7 @@
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 22:29:14 by luz-mjur          #+#    #+#             */
-/*   Updated: 2023/12/13 19:28:30 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:29:12 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	heredoc(char *del)
 	char	*line;
 	int		cnt;
 
-	fd = open("archivotem", O_CREAT | O_TRUNC |O_RDWR);
+	fd = open("archivotem", O_CREAT | O_TRUNC | O_RDWR);
 	while (1)
 	{
 		line = get_next_line(0);
@@ -74,11 +74,13 @@ void	son(char *command, char **env, int fd[2], int fd1)
 	if (execve(path, arg, env) < 0)
 		exit(1);
 }
+
 void	daddy(int fd[2])
 {
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 }
+
 void	ft_print_matrix(char **matrix)
 {
 	int	cnt;
@@ -86,16 +88,31 @@ void	ft_print_matrix(char **matrix)
 	cnt = 0;
 	while (matrix[cnt])
 	{
-		printf("%s\n", matrix[cnt]);
+		ft_printf("%s\n", matrix[cnt]);
 		cnt++;
 	}
 }
+
+char	*route(char *cmd)
+{
+	if (ft_strchr(cmd, '/'))
+	{
+		if ((((((((((access(cmd, F_OK) == 0))))))))))
+			return (cmd);
+		ft_printf(ROJO "[FATAL ERROR]exe not found\n");
+		exit(1);
+	}
+	return (0);
+}
+
 char	*ft_path(char *cmdname, char **env)
 {
 	int		cnt;
 	char	**path;
 	char	*comand;
 
+	if (route(cmdname))
+		return (route(cmdname));
 	cnt = 0;
 	while (env[cnt] != NULL && ft_strncmp(env[cnt], "PATH=", 5))
 		cnt++;
@@ -114,6 +131,7 @@ char	*ft_path(char *cmdname, char **env)
 	}
 	return (NULL);
 }
+
 int	main(int argc, char **argv, char **env)
 {
 	int		cnt;
@@ -125,12 +143,12 @@ int	main(int argc, char **argv, char **env)
 	cnt = 3;
 	if (!ft_strncmp("here_doc", argv[1], ft_strlen(argv[1])))
 	{
-		fd2 = open(argv[argc - 1], O_CREAT | O_APPEND | O_WRONLY , 0664);
+		fd2 = open(argv[argc - 1], O_CREAT | O_APPEND | O_WRONLY, 0664);
 		fd1 = heredoc(argv[2]);
 	}
 	else
 	{
-		fd2 = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY , 0664);
+		fd2 = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 0664);
 		fd1 = open(argv[1], O_RDONLY);
 	}
 	dup2(fd1, STDIN_FILENO);

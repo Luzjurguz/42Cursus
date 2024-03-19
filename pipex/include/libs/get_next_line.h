@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 22:29:10 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/02/09 23:56:23 by luz-mjur         ###   ########.fr       */
+/*   Created: 2023/11/04 15:56:50 by luz-mjur          #+#    #+#             */
+/*   Updated: 2024/02/10 00:01:39 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
-# define READ_END 0
-# define WRITE_END 1
-# define ROJO "\033[0;31m"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "../include/libs/get_next_line.h"
-# include "../include/libs/ft_printf.h"
-# include "../include/libs/libft.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 # include <fcntl.h>
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <sys/wait.h>
 # include <unistd.h>
+# include "libft.h"
 
-void	envario(int fd1, char **env, char *command);
-void	ft_print_matrix(char **matrix);
-void	son(char *command, char **env, int fd[2], int fd1);
-void	daddy(int fd[2]);
-char	*ft_path(char *cmdname, char **env);
-int		heredoc(char *del);
+int		ft_strlen(const char *str);
+char	*ft_strdup(const char *s1);
+char	*get_next_line(int fd);
+char	*read_save(char *stack, int fd);
+char	*copy_in_line(char *stack);
+char	*update_stack(char *stack);
+char	*ft_strchr(const char *str, int c);
 #endif
