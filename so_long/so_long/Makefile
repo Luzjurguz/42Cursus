@@ -1,8 +1,20 @@
--NAME = so_long
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/15 22:17:06 by luz-mjur          #+#    #+#              #
+#    Updated: 2024/02/09 23:54:34 by luz-mjur         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = so_long
 CFLAGS	= -Wextra -Wall -Werror
 MLX42	= ./MLX42/libmlx42.a
 LIBS	:= -ldl -lglfw3 -pthread -lm $(LIBMLX)
-SRCS	:= main.c
+SRCS	:= cholo.c get_next_line/get_next_line.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: $(NAME)
