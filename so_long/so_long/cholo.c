@@ -29,7 +29,7 @@ void parseo()
 
 	i = 0;
 
-	while (str)
+	if (str)
 	{
 		cnt = 0;
 		str = get_next_line("ruta del mapa"); // primera y ultima llamada todo debe ser 1 //si no hay una siguiente linea todo debe ser 1
@@ -40,22 +40,25 @@ void parseo()
 			if (str[cnt] != "1")
 			{
 				ft_printf("mapa inválido");
-				exit;
+				exit(1);
 			}
 			cnt++;
 		}
-		str = get_next_line("ruta del mapa");
-		while (str[cnt] != '\0')
+		mapa[i][cnt + 1] = str[cnt + 1];
+		i++;
+		while (str != NULL)
 		{
-			if (str[cnt + 1] == '\0')
-				if (str[cnt] != "E" & str[cnt] != "P" & str[cnt] != "C" & str[cnt] != "1" & str[cnt] != "0")
+			str = get_next_line("ruta del mapa");
+			while (str[cnt] != '\0')
+			{
+				if (str[cnt] != "E" && str[cnt] != "P" && str[cnt] != "C" && str[cnt] != "1" && str[cnt] != "0")
 				{
-					ft_printf("mapa ilválido");
+					ft_printf("mapa inválido");
 					exit;
 				}
 				else
 				{
-					if (cnt == 0 || cnt + 1 == '\0')
+					if (cnt == 0 || str[cnt] + 1 == '\0')
 					{
 						if (str[cnt] == "1")
 							muro = 3;
@@ -72,7 +75,9 @@ void parseo()
 					if (str[cnt] == "C")
 						ce++;
 				}
-			cnt++;
+				mapa[i][cnt] = str[cnt];
+				cnt++;
+			}
 		}
 		if (eh != 1 || ce < 1 || pnj != 1 || muro != 1)
 		{
@@ -82,76 +87,61 @@ void parseo()
 		else
 			parse(mapa, x, y);
 	}
+}
 
-	void parse(char **mapa, int x, int y)
+void parse(char **mapa, int x, int y)
+{
+	if (mapa[y][x] != '1' && mapa[y][x] != 'H')
 	{
-		if(mapa[x][y])
-		{
-			if(mapa[x][y] == "0")
-				mapa[x][y] == "x";
-			else()
-			if(map[x][y] != '\0')
-				map(mapa, x + 1, y + 1);
-		}
+		mapa[y][x] = 'H';
+		parse(mapa, x + 1, y);
+		parse(mapa, x, y + 1);
+		parse(mapa, x - 1, y);
+		parse(mapa, x, y - 1);
 	}
+}
 
-	void mapx(char **mapa, int x, int y)
-	{
-		if (mapa[x][y] != '\0')
-		{
-			map(mapa, x + 1, y);
-		}
-	}
+void hook(void *param)
+{
+	mlx_t *mlx;
 
-	void mapy(char **mapa, int x, int y)
-	{
-		if (mapa[x][y] != '\0')
-		{
-			map(mapa, x, y + 1);
-		}
-	}
+	mlx = (mlx_t *)param;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+		g_img->instances[0].y -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+		g_img->instances[0].y += 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		g_img->instances[0].x -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		g_img->instances[0].x += 5;
+}
 
-	void hook(void *param)
-	{
-		mlx_t *mlx;
+void shaders()
+{
+}
 
-		mlx = (mlx_t *)param;
-		if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-			mlx_close_window(mlx);
-		if (mlx_is_key_down(mlx, MLX_KEY_UP))
-			g_img->instances[0].y -= 5;
-		if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-			g_img->instances[0].y += 5;
-		if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-			g_img->instances[0].x -= 5;
-		if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-			g_img->instances[0].x += 5;
-	}
+int32_t main(void)
+{
+	mlx_t *mlx;
+	mlx_texture_t *fondo;
+	mlx_texture_t *pnj;
+	mlx_texture_t *malo;
 
-	void shaders()
-	{
-	}
+	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", false);
+	if (!mlx)
+		exit(EXIT_FAILURE);
 
-	int32_t main(void)
-	{
-		mlx_t *mlx;
-		mlx_texture_t *fondo;
-		mlx_texture_t *pnj;
-		mlx_texture_t *malo;
+	fondo = mlx_load_png("fondo.png");
+	pnj = mlx_load_png("pnj.png");
+	malo = mlx_load_png("malo.png");
 
-		mlx = mlx_init(WIDTH, HEIGHT, "MLX42", false);
-		if (!mlx)
-			exit(EXIT_FAILURE);
+	g_img = mlx_texture_to_image(mlx, pnj);
 
-		fondo = mlx_load_png("fondo.png");
-		pnj = mlx_load_png("pnj.png");
-		malo = mlx_load_png("malo.png");
-
-		g_img = mlx_texture_to_image(mlx, pnj);
-
-		mlx_image_to_window(mlx, g_img, 0, 0);
-		mlx_loop_hook(mlx, &hook, mlx);
-		mlx_loop(mlx);
-		// mlx_terminate(mlx);
-		return (EXIT_SUCCESS);
-	}
+	mlx_image_to_window(mlx, g_img, 0, 0);
+	mlx_loop_hook(mlx, &hook, mlx);
+	mlx_loop(mlx);
+	// mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
+}

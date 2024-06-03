@@ -22,25 +22,11 @@
 #define WIDTH 720
 #define HEIGHT 720
 
-mlx_image_t	*g_img;
 
-typedef struct mlx_key_data
+typedef struct cholo
 {
-	keys_t		key;
-	action_t	action;
-	int32_t		os_key;
-	modifier_key_t	modifier;
-}	mlx_key_data_t;
+	
+}
 
-typedef struct mlx_image
-{
-	const uint32_t	width;
-	const uint32_t	height;
-	uint8_t*		pixels;
-	mlx_instance_t*	instances;
-	int32_t			count;
-	bool			enabled;
-	void*			context;
-}	mlx_image_t;
 
 #endif
