@@ -6,13 +6,13 @@
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:25:41 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/06/05 23:00:14 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/08/02 06:38:12 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*s3;
 	int		i;
