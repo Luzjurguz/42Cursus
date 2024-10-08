@@ -64,20 +64,20 @@ int	parseo(char **argv, int fd, t_cholo *cholo)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		printf("No hay acceso al archivo\n");
+		ft_putstr_fd("No hay acceso al archivo\n", 2);
 		return (1);
 	}
 	cholo->mapa = archivo(fd);
 	if (cholo->mapa == NULL)
 	{
-		printf("El mapa está vacío\n");
+		ft_putstr_fd("El mapa está vacío\n", 2);
 		return (1);
 	}
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	if (muros(cholo->mapa) == 1)
 	{
-		printf("El mapa no está rodeados por muros\n");
+		ft_putstr_fd("El mapa no está rodeados por muros\n", 2);
 		return (1);
 	}
 	if (recto(cholo->mapa))
@@ -94,7 +94,10 @@ int	parseo2(t_cholo *cholo)
 		return (1);
 	ft_pos(cholo);
 	if (flotfil(cholo->mapa, cholo->pj_x, cholo->pj_y) != cholo->ce + 1)
+	{
+		ft_putstr_fd("El mapa no tiene solución\n", 2);
 		return (1);
+	}
 	return (0);
 }
 
@@ -120,9 +123,9 @@ int	main(int argc, char **argv)
 				"Cholo Simepone", false);
 		textu(cholo);
 		venticar(cholo, cholo->mapa);
+		mlx_close_hook(cholo->venti, matalics, cholo);
 		mlx_key_hook(cholo->venti, hoooook, cholo);
 		mlx_loop_hook(cholo->venti, sesale, cholo);
-		mlx_close_hook(cholo->venti, matalics, cholo);
 		mlx_loop(cholo->venti);
 	}
 }

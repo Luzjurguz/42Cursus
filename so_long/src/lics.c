@@ -24,12 +24,12 @@ void	matalics(void *cholostruc)
 	mlx_delete_image(cholo->venti, cholo->pnj);
 	mlx_delete_image(cholo->venti, cholo->muro);
 	mlx_delete_image(cholo->venti, cholo->sal);
-	while (cnt < cholo->ce - 1)
+	while (cnt < cholo->ce)
 	{
 		mlx_delete_image(cholo->venti, cholo->colec[cnt]);
 		cnt++;
 	}
 	free(cholo->colec);
-	free(cholo->venti);
+	mlx_close_window(cholo->venti);
 	free(cholo);
 }

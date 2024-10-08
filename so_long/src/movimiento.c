@@ -57,7 +57,7 @@ void	hoooook(mlx_key_data_t tecla, void *chostruc)
 	if (tecla.action == MLX_PRESS)
 	{
 		if (tecla.key == MLX_KEY_ESCAPE)
-			mlx_close_window(cholo->venti);
+			matalics(cholo);
 		if (tecla.key == MLX_KEY_W && !sepisa(cholo->mapa, *posy / 64, *posx
 				/ 64, 'W'))
 			mov(cholo, posy, posx, 'W');
