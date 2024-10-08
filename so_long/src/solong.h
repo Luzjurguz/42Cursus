@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaen-mo <jjaen-mo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:15:47 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/10/05 18:06:21 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/10/08 21:43:47 by jjaen-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLONG_H
 # define SOLONG_H
 
-# include "MLX42/include/MLX42/MLX42.h"
-# include "libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <memory.h>
 # include <stdio.h>

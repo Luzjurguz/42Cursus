@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseo_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaen-mo <jjaen-mo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:44:40 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/10/05 18:24:38 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:50:27 by jjaen-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ char	**archivo(int fd)
 	while (str2 != NULL)
 	{
 		str = ft_strjoin(str, str2);
-		free(str2);
+		if (str2)
+			free(str2);
 		str2 = get_next_line(fd);
 	}
 	mapa = ft_split(str, '\n');
-	free(str);
+	if (str)
+		free(str);
 	return (mapa);
 }
 

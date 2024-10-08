@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+         #
+#    By: jjaen-mo <jjaen-mo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 22:17:06 by luz-mjur          #+#    #+#              #
-#    Updated: 2024/10/05 18:25:24 by luz-mjur         ###   ########.fr        #
+#    Updated: 2024/10/08 22:45:28 by jjaen-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ CFLAGS	= -Wextra -Wall -Werror
 MLX42	= ./MLX42/libmlx42.a
 LIBFT   = ./libft/libft.a
 LIBS	:= -ldl -g -lglfw3 -lm $(LIBMLX)
-SRCS	:= cholo.c movimiento.c parseo_char.c parseo_map.c textu.c utils.c lics.c
+SRCS	:= src/cholo.c src/movimiento.c src/parseo_char.c src/parseo_map.c \
+src/textu.c src/utils.c src/lics.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MLX42) $(LIBFT)
-	@gcc $(OBJS) $(CFLAGS) $(MLX42) $(LIBFT) -Iinclude -ldl -lglfw -lm -o $(NAME)
+	@gcc $(OBJS) $(CFLAGS) $(MLX42) $(LIBFT) -fPIE -Iinclude -ldl -lglfw -lm -o $(NAME)
 
 $(LIBFT):
 	make -C libft

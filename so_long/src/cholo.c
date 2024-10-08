@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cholo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaen-mo <jjaen-mo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:15:47 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/10/05 18:06:06 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:37:06 by jjaen-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,11 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_cholo	*cholo;
 
-	cholo = malloc(sizeof(t_cholo));
 	fd = 0;
 	if (argc == 2)
 	{
+		cholo = malloc(sizeof(t_cholo));
+		cholo->pas = 0;
 		boia_ber(argv[1]);
 		if (parseo(argv, fd, cholo) == 1)
 			return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textu.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaen-mo <jjaen-mo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:55:00 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/10/05 16:55:16 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:44:34 by jjaen-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	textu(t_cholo *cholo)
 	cholo->sal = mlx_texture_to_image(cholo->venti, textu);
 	mlx_delete_texture(textu);
 	cnt = 0;
-	cholo->colec = malloc(sizeof(cholo->ce + 1));
+	cholo->colec = malloc(sizeof(mlx_image_t) * (cholo->ce + 1));
 	while (cnt < cholo->ce)
 	{
 		textu = mlx_load_png("textu/colec.png");
@@ -58,6 +58,7 @@ void	colec(t_cholo *cholo, int cnt, int cnt2)
 	static int	cnt3 = 0;
 
 	mlx_image_to_window(cholo->venti, cholo->suelo, cnt2 * 64, cnt * 64);
+	cholo->cecoge = 0;
 	if (cnt3 < cholo->ce)
 	{
 		mlx_image_to_window(cholo->venti, cholo->colec[cnt3], cnt2 * 64, cnt
