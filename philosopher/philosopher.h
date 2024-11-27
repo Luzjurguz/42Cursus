@@ -6,7 +6,7 @@
 /*   By: luz-mjur <luz-mjur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:22:09 by luz-mjur          #+#    #+#             */
-/*   Updated: 2024/11/27 20:50:20 by luz-mjur         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:53:14 by luz-mjur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 # define PHILOSOPHER_H
 # include <pthread.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_philo
-{
-	int		id;
-	int		number_of_philosophers;
-	int		time_to_die;
-	int		time_to_sleep;
-	int		time_to_eat;
-	int		number_of_times_each_philosopher_must_eat;
+# include <stdlib.h>gi
 
 }			t_philo;
 
